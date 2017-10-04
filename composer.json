@@ -1,0 +1,61 @@
+{
+    "name": "tenolo/form-types-bundle",
+    "description": "Provides basic form types and extensions for Symfony.",
+    "keywords": [
+        "form",
+        "type",
+        "extension",
+        "tenolo",
+        "symfony",
+        "bundle"
+    ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "homepage": "http://tenolo.de",
+    "authors": [
+        {
+            "name": "tenolo - Robert Bernis, Johannes Herberhold GbR",
+            "email": "info@tenolo.de",
+            "homepage": "http://tenolo.de"
+        },
+        {
+            "name": "Nikita Loges",
+            "email": "n.loges@tenolo.de"
+        }
+    ],
+    "require": {
+        "php": "~5.6|~7.0",
+
+        "symfony/framework-bundle": "~2.8|~3.0",
+        "symfony/http-kernel": "~2.8|~3.0",
+        "symfony/config": "~2.8|~3.0",
+        "symfony/dependency-injection": "~2.8|~3.0",
+        "symfony/form": "~2.8|~3.0",
+        "symfony/validator": "~2.8|~3.0",
+
+        "mmoreram/symfony-bundle-dependencies": "~1.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.tenolo.com/repo/private/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Tenolo\\Bundle\\FormTypesBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tenolo\\Bundle\\FormTypesBundle\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
