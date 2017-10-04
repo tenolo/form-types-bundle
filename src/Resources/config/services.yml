@@ -1,1 +1,52 @@
 services:
+
+    # types
+    tenolo_form_types.form_type.color:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Type\ColorType
+        tags:
+            - { name: form.type, alias: color }
+
+    tenolo_form_types.form_type.date_range:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Type\DateRangeType
+        tags:
+            - { name: form.type, alias: date_range }
+
+    tenolo_form_types.form_type.gender:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Type\GenderType
+        tags:
+            - { name: form.type, alias: gender }
+
+    tenolo_form_types.form_type.yes_no_choice:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Type\YesNoType
+        tags:
+            - { name: form.type, alias: yes_no_choice }
+
+    # extensions
+    tenolo_form_types.form_extension.global_form_error:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\GlobalFormErrorExtension
+        arguments: ["@tenolo_form_types.form_event.form_error"]
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    tenolo_form_types.form_extension.query_builder:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\QueryBuilderTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Bridge\Doctrine\Form\Type\EntityType }
+
+    tenolo_form_types.form_extension.resolve_target_entity:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\ResolveTargetEntityExtension
+        arguments: ['@doctrine']
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    tenolo_form_types.form_extension.valid_form:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\ValidFormEventTypeExtension
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
+    # events
+    tenolo_form_types.form_event.form_error:
+        class: Tenolo\Bundle\FormTypesBundle\Form\EventListener\FormErrorSubscriber
+        arguments:
+            - '@twig'
+            - '@session.flash_bag'

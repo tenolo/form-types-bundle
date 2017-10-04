@@ -2,8 +2,10 @@
 
 namespace Tenolo\Bundle\FormTypesBundle;
 
+use Doctrine\Bundle\DoctrineBundle\DoctrineBundle;
 use Mmoreram\SymfonyBundleDependencies\DependentBundleInterface;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -24,6 +26,8 @@ class TenoloFormTypesBundle extends Bundle implements DependentBundleInterface
     {
         return [
             FrameworkBundle::class,
+            TwigBundle::class,
+            DoctrineBundle::class,
         ];
     }
 }

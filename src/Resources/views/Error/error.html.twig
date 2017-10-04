@@ -1,0 +1,23 @@
+<div>Es ist leider ein Fehler aufgetreten.</div>
+
+{% if errors is defined %}
+    <div>
+        <ul>
+            {% for error in errors %}
+                {% set vars = error.getOrigin().createView().vars %}
+
+                <li>
+                    <div>
+                        <a href="#{{ vars['id'] }}">
+                            {% if vars['label'] is defined and vars['label'] is not empty %}
+                                {{ vars['label'] ~ ': ' }}
+                            {% endif %}
+
+                            {{ error.getMessage() }}
+                        </a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
