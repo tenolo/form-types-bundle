@@ -28,6 +28,12 @@ services:
         tags:
             - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
 
+    tenolo_form_types.form_extension.global_form_success:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\GlobalFormSuccessExtension
+        arguments: ["@tenolo_form_types.form_event.form_success"]
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+
     tenolo_form_types.form_extension.query_builder:
         class: Tenolo\Bundle\FormTypesBundle\Form\Extension\QueryBuilderTypeExtension
         tags:
@@ -47,6 +53,12 @@ services:
     # events
     tenolo_form_types.form_event.form_error:
         class: Tenolo\Bundle\FormTypesBundle\Form\EventListener\FormErrorSubscriber
+        arguments:
+            - '@twig'
+            - '@session.flash_bag'
+
+    tenolo_form_types.form_event.form_success:
+        class: Tenolo\Bundle\FormTypesBundle\Form\EventListener\FormSuccessSubscriber
         arguments:
             - '@twig'
             - '@session.flash_bag'
