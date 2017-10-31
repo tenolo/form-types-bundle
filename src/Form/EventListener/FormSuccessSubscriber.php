@@ -56,6 +56,10 @@ class FormSuccessSubscriber implements FormSuccessSubscriberInterface
         // get all errors
         $errorsAll = $form->getErrors(true);
 
+        if (!$form->isRoot()) {
+            return;
+        }
+
         // show error messages
         if (!count($errorsAll)) {
             if ($options['form_success_template'] !== false) {
