@@ -46,7 +46,7 @@ class GlobalFormSuccessExtension extends AbstractTypeExtension
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'form_success_handler_enable' => true,
+            'form_success_handler_enable' => false,
             'form_success_template'       => false,
             'form_success_message'        => 'Die Daten wurden erfolgreich gespeichert.',
             'form_success_handler'        => $this->defaultHandler
