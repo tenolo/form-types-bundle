@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
  *
  * @package Tenolo\Bundle\FormTypesBundle\Form\Type
  * @author  Nikita Loges
- * @date    10.12.2014
  */
 class ColorType extends AbstractType
 {
