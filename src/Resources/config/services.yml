@@ -22,6 +22,12 @@ services:
             - { name: form.type, alias: yes_no_choice }
 
     # extensions
+    tenolo_form_types.form_extension.date_type_format:
+        class: Tenolo\Bundle\FormTypesBundle\Form\Extension\DateTypeFormatExtension
+        arguments: ["@tenolo_form_types.form_event.form_error"]
+        tags:
+            - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\DateType }
+
     tenolo_form_types.form_extension.global_form_error:
         class: Tenolo\Bundle\FormTypesBundle\Form\Extension\GlobalFormErrorExtension
         arguments: ["@tenolo_form_types.form_event.form_error"]
