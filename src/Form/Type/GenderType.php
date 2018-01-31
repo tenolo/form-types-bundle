@@ -43,14 +43,14 @@ class GenderType extends AbstractType
             switch ($options['gender_type']) {
                 case 'salutation':
                     return [
-                        'Frau' => $options['value_female'],
                         'Herr' => $options['value_male'],
+                        'Frau' => $options['value_female'],
                     ];
                     break;
                 case 'gender':
                     return [
-                        'weiblich' => $options['value_female'],
                         'männlich' => $options['value_male'],
+                        'weiblich' => $options['value_female'],
                     ];
                     break;
             }
