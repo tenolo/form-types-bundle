@@ -39,7 +39,6 @@
         "doctrine/orm": "~2.5",
         "doctrine/doctrine-bundle": "~1.6",
 
-        "mmoreram/symfony-bundle-dependencies": "~1.0",
         "twig/twig": "~1.34|~2.0"
     },
     "repositories": [
