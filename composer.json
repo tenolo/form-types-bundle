@@ -41,20 +41,9 @@
 
         "twig/twig": "~1.34|~2.0"
     },
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://repo.tenolo.com/"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "Tenolo\\Bundle\\FormTypesBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tenolo\\Bundle\\FormTypesBundle\\Tests\\": "tests/"
         }
     },
     "extra": {
