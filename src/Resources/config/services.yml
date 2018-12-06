@@ -4,22 +4,22 @@ services:
     tenolo_form_types.form_type.color:
         class: Tenolo\Bundle\FormTypesBundle\Form\Type\ColorType
         tags:
-            - { name: form.type, alias: color }
+            - { name: form.type }
 
     tenolo_form_types.form_type.date_range:
         class: Tenolo\Bundle\FormTypesBundle\Form\Type\DateRangeType
         tags:
-            - { name: form.type, alias: date_range }
+            - { name: form.type }
 
     tenolo_form_types.form_type.gender:
         class: Tenolo\Bundle\FormTypesBundle\Form\Type\GenderType
         tags:
-            - { name: form.type, alias: gender }
+            - { name: form.type }
 
     tenolo_form_types.form_type.yes_no_choice:
         class: Tenolo\Bundle\FormTypesBundle\Form\Type\YesNoType
         tags:
-            - { name: form.type, alias: yes_no_choice }
+            - { name: form.type }
 
     # extensions
     tenolo_form_types.form_extension.date_type_format:
