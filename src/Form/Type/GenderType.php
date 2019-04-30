@@ -22,48 +22,61 @@ class GenderType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        /** @var $resolver OptionsResolver */
-        $resolver->setDefault('gender_type', 'salutation');
-        $resolver->setAllowedTypes('gender_type', ['null', 'string']);
-        $resolver->setAllowedValues('gender_type', [null, 'gender', 'salutation']);
-
         $resolver->setDefaults([
+            'gender_type'       => 'salutation',
+            'divers_enable'     => false,
+            'value_divers'      => 'divers',
             'value_female'      => 'female',
             'value_male'        => 'male',
-            'label_female'      => 'Frau',
-            'label_male'        => 'Herr',
-            'choices_as_values' => true
+            'label_divers'      => function (Options $options) {
+                if ($options['gender_type'] === 'salutation') {
+                    return 'Divers';
+                }
+
+                return 'divers';
+            },
+            'label_female'      => function (Options $options) {
+                if ($options['gender_type'] === 'salutation') {
+                    return 'Herr';
+                }
+
+                return 'weiblich';
+            },
+            'label_male'        => function (Options $options) {
+                if ($options['gender_type'] === 'salutation') {
+                    return 'Herr';
+                }
+
+                return 'männlich';
+            },
+            'choices_as_values' => true,
+            'expanded'          => true,
         ]);
-        $resolver->setAllowedTypes('value_female', 'string');
-        $resolver->setAllowedTypes('value_male', 'string');
-        $resolver->setAllowedTypes('label_female', 'string');
-        $resolver->setAllowedTypes('label_male', 'string');
 
         $resolver->setDefault('choices', function (Options $options) {
-            switch ($options['gender_type']) {
-                case 'salutation':
-                    return [
-                        'Herr' => $options['value_male'],
-                        'Frau' => $options['value_female'],
-                    ];
-                    break;
-                case 'gender':
-                    return [
-                        'männlich' => $options['value_male'],
-                        'weiblich' => $options['value_female'],
-                    ];
-                    break;
-            }
-
-            return [
+            $choices = [
                 $options['label_female'] => $options['value_female'],
                 $options['label_male']   => $options['value_male'],
             ];
+
+            if ($options['divers_enable']) {
+                $choices[$options['label_divers']] = $options['value_divers'];
+            }
+
+            return $choices;
         });
 
-        $resolver->setDefaults([
-            'expanded' => true
-        ]);
+        $resolver->setAllowedTypes('divers_enable', 'bool');
+        $resolver->setAllowedTypes('value_divers', 'string');
+        $resolver->setAllowedTypes('value_female', 'string');
+        $resolver->setAllowedTypes('value_male', 'string');
+        $resolver->setAllowedTypes('label_divers', 'string');
+        $resolver->setAllowedTypes('label_female', 'string');
+        $resolver->setAllowedTypes('label_male', 'string');
+        $resolver->setAllowedTypes('gender_type', ['null', 'string']);
+
+        $resolver->setAllowedValues('gender_type', [null, 'gender', 'salutation']);
+
     }
 
     /**
