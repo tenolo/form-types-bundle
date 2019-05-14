@@ -37,7 +37,7 @@ class GenderType extends AbstractType
             },
             'label_female'      => function (Options $options) {
                 if ($options['gender_type'] === 'salutation') {
-                    return 'Herr';
+                    return 'Frau';
                 }
 
                 return 'weiblich';
@@ -62,6 +62,7 @@ class GenderType extends AbstractType
             if ($options['divers_enable']) {
                 $choices[$options['label_divers']] = $options['value_divers'];
             }
+
 
             return $choices;
         });
