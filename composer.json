@@ -39,7 +39,7 @@
         "doctrine/orm": "~2.5",
         "doctrine/doctrine-bundle": "~1.6",
 
-        "twig/twig": "~1.34|~2.0"
+        "twig/twig": "^2.11|^3.0"
     },
     "autoload": {
         "psr-4": {

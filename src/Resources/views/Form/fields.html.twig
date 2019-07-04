@@ -1,6 +1,6 @@
 {% block color_widget %}
-    {% spaceless %}
+    {% apply spaceless %}
         {% set type = 'color' %}
         {{ block('form_widget_simple') }}
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
