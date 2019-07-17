@@ -26,7 +26,8 @@ class QueryBuilderTypeExtension extends AbstractTypeExtension
     {
         $resolver->setNormalizer('query_builder', function (Options $options, $queryBuilder) {
             if (is_callable($queryBuilder)) {
-                $queryBuilder = call_user_func($queryBuilder, $options['em']->getRepository($options['class']), $options);
+                $repo = $options['em']->getRepository($options['class']);
+                $queryBuilder = call_user_func($queryBuilder, $repo, $options);
 
                 if (null !== $queryBuilder && !$queryBuilder instanceof QueryBuilder) {
                     throw new UnexpectedTypeException($queryBuilder, QueryBuilder::class);
