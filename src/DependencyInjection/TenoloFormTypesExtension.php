@@ -6,7 +6,7 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
-use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
  * Class TenoloFormTypesExtension
@@ -15,15 +15,16 @@ use Symfony\Component\HttpKernel\DependencyInjection\ConfigurableExtension;
  * @author  Nikita Loges
  * @company tenolo GbR
  */
-class TenoloFormTypesExtension extends ConfigurableExtension implements PrependExtensionInterface
+class TenoloFormTypesExtension extends Extension implements PrependExtensionInterface
 {
 
     /**
      * @inheritdoc
      */
-    public function loadInternal(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $locator = new FileLocator(__DIR__.'/../Resources/config');
+        $loader = new Loader\YamlFileLoader($container, $locator);
         $loader->load('services.yml');
     }
 
@@ -43,7 +44,7 @@ class TenoloFormTypesExtension extends ConfigurableExtension implements PrependE
         return [
             'form_themes' => [
                 'TenoloFormTypesBundle:Form:fields.html.twig',
-            ]
+            ],
         ];
     }
 
