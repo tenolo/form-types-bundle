@@ -51,9 +51,19 @@ class GenderType extends AbstractType
             },
             'choices_as_values' => true,
             'expanded'          => true,
+            'required'          => false,
+            'placeholder'       => function (Options $options) {
+                if ($options['expanded'] === true) {
+                    return 'keine Angabe';
+                }
+
+                return '';
+            },
         ]);
 
         $resolver->setDefault('choices', function (Options $options) {
+            $choices = [];
+
             $choices = [
                 $options['label_female'] => $options['value_female'],
                 $options['label_male']   => $options['value_male'],
